@@ -1,4 +1,4 @@
-package charades.scenesControlers;
+package charades.sceneControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
