@@ -1,5 +1,6 @@
 package charades;
 
+import charades.sceneControllers.Painter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
