@@ -3,6 +3,8 @@ module com.example.charades {
     requires javafx.fxml;
 
 
-    opens com.example.charades to javafx.fxml;
-    exports com.example.charades;
+    opens charades to javafx.fxml;
+    exports charades;
+    exports charades.scenesControlers;
+    opens charades.scenesControlers to javafx.fxml;
 }
