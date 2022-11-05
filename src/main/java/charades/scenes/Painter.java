@@ -1,6 +1,9 @@
-package charades.sceneControllers;
+package charades.scenes;
 
 import charades.Constants;
+import charades.painting.Action;
+import charades.painting.ActionHandler;
+import charades.painting.DrawAction;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,12 +31,13 @@ public class Painter implements Initializable {
      @FXML
      ColorPicker cp;
 
-     GraphicsContext gc;
+     ActionHandler actionHandler;
+
+
 
      @Override
      public void initialize(URL url, ResourceBundle resourceBundle) {
-         gc = canvas.getGraphicsContext2D();
-         gc.setLineWidth(4);
+         actionHandler = new ActionHandler(canvas);
          vBox.setDisable(true);
          new Thread(() -> {
              try {
@@ -54,14 +58,13 @@ public class Painter implements Initializable {
              try {
                  while (progress < 1) {
                      progress = (float) (System.currentTimeMillis() - startTime) / Constants.paintingTime;
-                     System.out.println(progress);
                      pb.setProgress(progress);
                      sleep(50);
                  }
              } catch (InterruptedException ex) {
                  ex.printStackTrace();
              } finally {
-                 gc.closePath();
+                 actionHandler.getCurrentAction().stopAction();
                  canvas.setOnMouseDragged(null);
                  canvas.setOnMouseReleased(null);
                  vBox.setDisable(true);
@@ -70,22 +73,16 @@ public class Painter implements Initializable {
 
      }
 
-     public void handleCanvasOnMousePressed(MouseEvent e) {
-         gc.setStroke(Color.BLACK);
-         gc.beginPath();
-         gc.lineTo(e.getX(), e.getY());
+     public void handleCanvasOnMousePressed(MouseEvent e){
+         actionHandler.getCurrentAction().handleOnMousePressed(e);
      }
 
      public void handleCanvasOnMouseDragged(MouseEvent e) {
-         gc.lineTo(e.getX(), e.getY());
-         gc.stroke();
-
+         actionHandler.getCurrentAction().handleOnMouseDragged(e);
      }
 
      public void handleCanvasOnMouseReleased(MouseEvent e) {
-         gc.lineTo(e.getX(), e.getY());
-         gc.stroke();
-         gc.closePath();
+         actionHandler.getCurrentAction().handleOnMouseReleased(e);
      }
  }
 

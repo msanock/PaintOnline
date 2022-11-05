@@ -5,6 +5,6 @@ module com.example.charades {
 
     opens charades to javafx.fxml;
     exports charades;
-    exports charades.sceneControllers;
-    opens charades.sceneControllers to javafx.fxml;
+    exports charades.scenes;
+    opens charades.scenes to javafx.fxml;
 }
