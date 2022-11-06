@@ -1,19 +1,18 @@
 package charades.scenes;
 
 import charades.Constants;
-import charades.painting.Action;
 import charades.painting.ActionHandler;
-import charades.painting.DrawAction;
+import charades.painting.ActionTypes;
+import charades.scenes.components.SimpleColorPicker;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +28,9 @@ public class Painter implements Initializable {
      @FXML
      ProgressBar pb;
      @FXML
-     ColorPicker cp;
+     SimpleColorPicker simpleColorPicker;
+     @FXML
+     Button rubberButton;
 
      ActionHandler actionHandler;
 
@@ -37,7 +38,7 @@ public class Painter implements Initializable {
 
      @Override
      public void initialize(URL url, ResourceBundle resourceBundle) {
-         actionHandler = new ActionHandler(canvas);
+         actionHandler = new ActionHandler(canvas, simpleColorPicker);
          vBox.setDisable(true);
          new Thread(() -> {
              try {
@@ -73,6 +74,8 @@ public class Painter implements Initializable {
 
      }
 
+
+
      public void handleCanvasOnMousePressed(MouseEvent e){
          actionHandler.getCurrentAction().handleOnMousePressed(e);
      }
@@ -83,6 +86,11 @@ public class Painter implements Initializable {
 
      public void handleCanvasOnMouseReleased(MouseEvent e) {
          actionHandler.getCurrentAction().handleOnMouseReleased(e);
+     }
+
+
+     public void handleRubberButton(ActionEvent e) {
+         actionHandler.setCurrentAction(ActionTypes.rubberAction);
      }
  }
 

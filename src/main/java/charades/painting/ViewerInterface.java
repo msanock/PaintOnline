@@ -1,6 +1,6 @@
 package charades.painting;
 
-public interface ViewerAction {
+public interface ViewerInterface {
 
     void performAction();
 }

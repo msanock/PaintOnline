@@ -1,20 +1,30 @@
 package charades.painting;
 
-import charades.scenes.Painter;
+import charades.scenes.components.SimpleColorPicker;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 
-public class DrawAction extends Action{
+public class DrawAction extends InteractiveAction {
+    protected SimpleColorPicker scp;
+    boolean isActive;
 
-    DrawAction(Canvas canvas) {
+
+    DrawAction(Canvas canvas, SimpleColorPicker scp) {
         super(canvas);
+        this.scp = scp;
     }
 
     @Override
     public void handleOnMousePressed(MouseEvent e) {
-        gc.setStroke(Color.BLACK);
+
+        try {
+            gc.setStroke(scp.getCurrentColor());
+        } catch (Exception ex) {
+            isActive = false;
+            return;
+        }
+        isActive = true;
+
         gc.beginPath();
         gc.lineTo(e.getX(), e.getY());
         System.out.println(e.getX()+ "--" + e.getY());
@@ -22,6 +32,7 @@ public class DrawAction extends Action{
 
     @Override
     public void handleOnMouseDragged(MouseEvent e) {
+        if (!isActive) return;
         gc.lineTo(e.getX(), e.getY());
         System.out.println(e.getX()+ "--" + e.getY());
         gc.stroke();
@@ -29,6 +40,7 @@ public class DrawAction extends Action{
 
     @Override
     public void handleOnMouseReleased(MouseEvent e) {
+        if (!isActive) return;
         gc.lineTo(e.getX(), e.getY());
         System.out.println(e.getX()+ "--" + e.getY());
         gc.stroke();

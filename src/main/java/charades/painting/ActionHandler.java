@@ -1,25 +1,29 @@
 package charades.painting;
 
+import charades.scenes.components.SimpleColorPicker;
 import javafx.scene.canvas.Canvas;
 
-import java.util.ArrayList;
-
 public class ActionHandler {
-    Action currentAction;
+    InteractiveAction currentAction;
+    
 
     DrawAction drawAction;
-//    RubberAction rubberAction;
+    RubberAction rubberAction;
 //    RedoAction redoAction;
 //    UndoAction undoAction;
 
 
 
-    public ActionHandler(Canvas canvas){
-        currentAction = drawAction = new DrawAction(canvas);
-//        rubberAction = new RubberAction();
+    public ActionHandler(Canvas canvas, SimpleColorPicker cp) {
+        currentAction = drawAction = new DrawAction(canvas, cp);
+        rubberAction = new RubberAction(canvas);
     }
 
-    public Action getCurrentAction() {
+    public InteractiveAction getCurrentAction() {
         return currentAction;
+    }
+
+    public void setCurrentAction(ActionTypes action) {
+        currentAction = (action.getAction() == drawAction.getClass()) ? drawAction : rubberAction;
     }
 }

@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 //
 // The process by which enum constants are serialized cannot be customized: any class-specific writeObject, readObject, readObjectNoData, writeReplace, and readResolve methods defined by enum types are ignored during serialization and deserialization.
 // Similarly, any serialPersistentFields or serialVersionUID field declarations are also ignored--all enum types have a fixed serialVersionUID of 0L. Documenting serializable fields and data for enum types is unnecessary, since there is no variation in the type of data sent.
-public  enum Colors{
+public enum Colors{
     black(Color.BLACK),
     white(Color.WHITE),
     grey(Color.GRAY),
@@ -22,6 +22,7 @@ public  enum Colors{
     red(Color.RED);
 
     private final Color color;
+
 
     Colors(Color color) {
         this.color = color;

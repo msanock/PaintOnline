@@ -7,4 +7,6 @@ module com.example.charades {
     exports charades;
     exports charades.scenes;
     opens charades.scenes to javafx.fxml;
+    exports charades.scenes.components;
+    opens charades.scenes.components to javafx.fxml;
 }
