@@ -1,4 +1,4 @@
-package paint.painting;
+package paintOnline.painting;
 
 import javafx.scene.input.MouseEvent;
 

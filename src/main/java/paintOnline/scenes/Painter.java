@@ -1,10 +1,8 @@
-package paint.scenes;
+package paintOnline.scenes;
 
-import paint.Constants;
-import paint.painting.ActionHandler;
-import paint.painting.ActionTypes;
-import paint.scenes.components.SimpleColorPicker;
-import javafx.application.Platform;
+import paintOnline.painting.ActionHandler;
+import paintOnline.painting.ActionTypes;
+import paintOnline.scenes.components.SimpleColorPicker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +16,7 @@ import javafx.util.Pair;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static paint.App.myClient;
+import static paintOnline.App.myClient;
 import static java.lang.Thread.sleep;
 
 public class Painter implements Initializable {

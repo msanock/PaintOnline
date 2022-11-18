@@ -1,4 +1,4 @@
-package paint;
+package paintOnline;
 
 
 public class Timer {

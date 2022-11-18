@@ -1,7 +1,7 @@
-package paint.serverConnection;
+package paintOnline.serverConnection;
 
-import paint.App;
-import paint.painting.ActionTypes;
+import paintOnline.App;
+import paintOnline.painting.ActionTypes;
 import connection.dualConnectionStation.Client;
 import connection.gates.Gates;
 import connection.gates.ReceiveFilters;

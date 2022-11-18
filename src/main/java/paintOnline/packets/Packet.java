@@ -1,4 +1,4 @@
-package paint.packets;
+package paintOnline.packets;
 
 import java.io.Serializable;
 

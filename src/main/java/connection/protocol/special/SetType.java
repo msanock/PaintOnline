@@ -1,6 +1,6 @@
 package connection.protocol.special;
 
-import paint.painting.ActionTypes;
+import paintOnline.painting.ActionTypes;
 
 import java.io.Serializable;
 

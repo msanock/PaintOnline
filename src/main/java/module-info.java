@@ -5,12 +5,12 @@ module com.example.charades {
     requires java.datatransfer;
 
 
-    opens paint to javafx.fxml;
-    exports paint;
-    exports paint.scenes;
-    opens paint.scenes to javafx.fxml;
-    exports paint.scenes.components;
-    opens paint.scenes.components to javafx.fxml;
+    opens paintOnline to javafx.fxml;
+    exports paintOnline;
+    exports paintOnline.scenes;
+    opens paintOnline.scenes to javafx.fxml;
+    exports paintOnline.scenes.components;
+    opens paintOnline.scenes.components to javafx.fxml;
     opens connection;
 
 }

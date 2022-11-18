@@ -1,8 +1,8 @@
-package paint.scenes.components;
+package paintOnline.scenes.components;
 
-import paint.painting.ActionHandler;
-import paint.painting.ActionTypes;
-import paint.painting.Colors;
+import paintOnline.painting.ActionHandler;
+import paintOnline.painting.ActionTypes;
+import paintOnline.painting.Colors;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;

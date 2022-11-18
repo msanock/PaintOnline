@@ -1,4 +1,4 @@
-package paint.serverConnection;
+package paintOnline.serverConnection;
 
 import connection.ConnectionSettings;
 import java.io.IOException;

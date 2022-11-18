@@ -1,6 +1,6 @@
-package paint.packets;
+package paintOnline.packets;
 
-import paint.painting.ActionTypes;
+import paintOnline.painting.ActionTypes;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

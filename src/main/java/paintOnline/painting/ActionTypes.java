@@ -1,4 +1,4 @@
-package paint.painting;
+package paintOnline.painting;
 
 public enum ActionTypes {
     rubberAction(RubberAction.class),

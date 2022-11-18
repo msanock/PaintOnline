@@ -1,7 +1,7 @@
-package paint.packets;
+package paintOnline.packets;
 
-import paint.painting.ActionTypes;
-import paint.painting.Colors;
+import paintOnline.painting.ActionTypes;
+import paintOnline.painting.Colors;
 
 public class DrawPacket extends ActionPacket {
     final static ActionTypes type = ActionTypes.drawAction;

@@ -1,6 +1,6 @@
-package paint.scenes;
+package paintOnline.scenes;
 
-import paint.App;
+import paintOnline.App;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

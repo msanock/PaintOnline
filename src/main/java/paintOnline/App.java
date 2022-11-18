@@ -1,8 +1,8 @@
-package paint;
+package paintOnline;
 
-import paint.painting.ActionTypes;
-import paint.painting.PerformServerDrawAction;
-import paint.serverConnection.MyClient;
+import paintOnline.painting.ActionTypes;
+import paintOnline.painting.PerformServerDrawAction;
+import paintOnline.serverConnection.MyClient;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;

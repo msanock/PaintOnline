@@ -1,6 +1,6 @@
-package paint.scenes.components;
+package paintOnline.scenes.components;
 
-import paint.painting.Colors;
+import paintOnline.painting.Colors;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;

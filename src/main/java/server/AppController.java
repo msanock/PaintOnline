@@ -13,6 +13,7 @@ import javafx.util.Pair;
 
 import java.io.Serializable;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -48,8 +49,8 @@ public class AppController implements MessageApplier {
         }
     }
 
-    Map<Integer, LinkedList<ProtocolMessage.PureData>> history;
-    Map<Socket, Pair<Integer, Integer>> socketToPioroIdAndRoom;
+    Map<Integer, LinkedList<ProtocolMessage.PureData>> history = new HashMap<>();
+    Map<Socket, Pair<Integer, Integer>> socketToPioroIdAndRoom = new HashMap<>();
 
     @Override
     public boolean applyMessage(ProtocolMessage message) {
@@ -77,6 +78,7 @@ public class AppController implements MessageApplier {
             }
 
             case CREATE_PIORO, MOVE_TO_POINT, SET_TYPE, DELETE_PIORO -> {
+                System.out.println("%");
                 if (protocol == Protocol.CREATE_PIORO) {
                     socketToPioroIdAndRoom.put(message.getOwner(),
                             new Pair<>((

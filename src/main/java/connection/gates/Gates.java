@@ -8,7 +8,7 @@ import connection.protocol.Protocol;
 import connection.protocol.ProtocolMessage;
 
 import javafx.util.Pair;
-import paint.Timer;
+import paintOnline.Timer;
 
 import java.io.Serializable;
 import java.net.Socket;

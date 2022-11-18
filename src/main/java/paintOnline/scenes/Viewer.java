@@ -1,4 +1,4 @@
-package paint.scenes;
+package paintOnline.scenes;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;

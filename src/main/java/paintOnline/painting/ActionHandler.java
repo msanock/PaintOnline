@@ -1,6 +1,6 @@
-package paint.painting;
+package paintOnline.painting;
 
-import paint.scenes.components.SimpleColorPicker;
+import paintOnline.scenes.components.SimpleColorPicker;
 import javafx.scene.canvas.Canvas;
 
 public class ActionHandler {
