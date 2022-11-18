@@ -1,6 +1,9 @@
 package charades.scenes.components;
 
+import charades.painting.ActionHandler;
+import charades.painting.ActionTypes;
 import charades.painting.Colors;
+import charades.painting.DrawAction;
 import charades.scenes.Painter;
 import charades.scenes.components.ColorButton;
 import javafx.animation.ScaleTransition;
@@ -19,7 +22,7 @@ public class SimpleColorPicker extends TilePane {
         this.setHgap(3);
         this.setVgap(3);
         for (var col : Colors.values()){
-            this.getChildren().add(new ColorButton(col.getColor()));
+            this.getChildren().add(new ColorButton(col));
         }
     }
 
@@ -41,10 +44,12 @@ public class SimpleColorPicker extends TilePane {
         if(currentColorButton != null) currentColorButton.unselect();
         currentColorButton = (ColorButton) e.getSource();
         currentColorButton.select();
+        ActionHandler.setCurrentAction(ActionTypes.drawAction);
+
     }
 
-    public Color getCurrentColor() throws Exception {
-        if (currentColorButton == null) throw new Exception("No color chosen");
+    public Colors getCurrentColor() throws RuntimeException {
+        if (currentColorButton == null) throw new RuntimeException("No color chosen");
         return currentColorButton.getColor();
     }
 

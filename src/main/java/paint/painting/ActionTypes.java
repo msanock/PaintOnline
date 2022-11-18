@@ -1,7 +1,5 @@
 package charades.painting;
 
-import javafx.scene.paint.Color;
-
 public enum ActionTypes {
     rubberAction(RubberAction.class),
     drawAction(DrawAction.class);

@@ -13,10 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static charades.App.myClient;
 import static java.lang.Thread.sleep;
 
 public class Painter implements Initializable {
@@ -33,6 +35,7 @@ public class Painter implements Initializable {
      Button rubberButton;
 
      ActionHandler actionHandler;
+
 
 
 
@@ -77,14 +80,19 @@ public class Painter implements Initializable {
 
 
      public void handleCanvasOnMousePressed(MouseEvent e){
+
+         myClient.moveMyPioroToPoint(new Pair<>(e.getX(),e.getY()));
+
          actionHandler.getCurrentAction().handleOnMousePressed(e);
      }
 
      public void handleCanvasOnMouseDragged(MouseEvent e) {
+         myClient.moveMyPioroToPoint(new Pair<>(e.getX(),e.getY()));
          actionHandler.getCurrentAction().handleOnMouseDragged(e);
      }
 
      public void handleCanvasOnMouseReleased(MouseEvent e) {
+         myClient.moveMyPioroToPoint(new Pair<>(e.getX(),e.getY()));
          actionHandler.getCurrentAction().handleOnMouseReleased(e);
      }
 

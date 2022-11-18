@@ -4,14 +4,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 
 public class RubberAction extends InteractiveAction{
-    double size = 20;
+    private double size = 20;
     RubberAction(Canvas canvas) {
         super(canvas);
     }
 
     @Override
     public void handleOnMousePressed(MouseEvent e) {
-        gc.clearRect(e.getX() - size / 2, e.getY() - size / 2, size, size);
+        gc.clearRect((e.getX() - size) / 2, (e.getY() - size) / 2, size, size);
     }
 
     @Override
@@ -24,13 +24,14 @@ public class RubberAction extends InteractiveAction{
         gc.clearRect(e.getX() - size / 2, e.getY() - size / 2, size, size);
     }
 
+
     @Override
     public void sendAction() {
 
     }
 
-    @Override
-    public void performAction() {
-
-    }
+//    @Override
+//    public void performAction() {
+//
+//    }
 }

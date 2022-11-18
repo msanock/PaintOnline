@@ -23,7 +23,6 @@ public enum Colors{
 
     private final Color color;
 
-
     Colors(Color color) {
         this.color = color;
     }
