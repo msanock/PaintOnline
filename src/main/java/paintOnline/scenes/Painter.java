@@ -43,37 +43,30 @@ public class Painter implements Initializable {
      public void initialize(URL url, ResourceBundle resourceBundle) {
          actionHandler = new ActionHandler(canvas, simpleColorPicker);
          vBox.setDisable(true);
-         new Thread(() -> {
-             try {
-                 sleep(2000);
-                 Platform.runLater(() -> startPainting("niewiem"));
-             } catch (InterruptedException ex) {
-                 ex.printStackTrace();
-             }
-         }).start();
+         startPainting();
      }
 
-     public void startPainting(String word){
+     public void startPainting(){
          vBox.setDisable(false);
 
-         new Thread(() -> {
-             final long startTime = System.currentTimeMillis();
-             float progress = (float) ( System.currentTimeMillis() - startTime) / Constants.paintingTime;
-             try {
-                 while (progress < 1) {
-                     progress = (float) (System.currentTimeMillis() - startTime) / Constants.paintingTime;
-                     pb.setProgress(progress);
-                     sleep(50);
-                 }
-             } catch (InterruptedException ex) {
-                 ex.printStackTrace();
-             } finally {
-                 actionHandler.getCurrentAction().stopAction();
-                 canvas.setOnMouseDragged(null);
-                 canvas.setOnMouseReleased(null);
-                 vBox.setDisable(true);
-             }
-         }).start();
+//         new Thread(() -> {
+//             final long startTime = System.currentTimeMillis();
+//             float progress = (float) ( System.currentTimeMillis() - startTime) / Constants.paintingTime;
+//             try {
+//                 while (progress < 1) {
+//                     progress = (float) (System.currentTimeMillis() - startTime) / Constants.paintingTime;
+//                     pb.setProgress(progress);
+//                     sleep(50);
+//                 }
+//             } catch (InterruptedException ex) {
+//                 ex.printStackTrace();
+//             } finally {
+//                 actionHandler.getCurrentAction().stopAction();
+//                 canvas.setOnMouseDragged(null);
+//                 canvas.setOnMouseReleased(null);
+//                 vBox.setDisable(true);
+//             }
+//         }).start();
 
      }
 

@@ -70,6 +70,7 @@ public class MyClient implements MessageApplier {
 
     public void setTypeOfMyPiora(ActionTypes type) {
         var setType = new SetType(idOfMyPioro, type);
+
         gates.sendWithoutCheck(Protocol.SET_TYPE, roomId, setType);
     }
 
