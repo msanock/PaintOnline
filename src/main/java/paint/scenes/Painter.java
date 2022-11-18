@@ -1,9 +1,9 @@
-package charades.scenes;
+package paint.scenes;
 
-import charades.Constants;
-import charades.painting.ActionHandler;
-import charades.painting.ActionTypes;
-import charades.scenes.components.SimpleColorPicker;
+import paint.Constants;
+import paint.painting.ActionHandler;
+import paint.painting.ActionTypes;
+import paint.scenes.components.SimpleColorPicker;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ import javafx.util.Pair;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static charades.App.myClient;
+import static paint.App.myClient;
 import static java.lang.Thread.sleep;
 
 public class Painter implements Initializable {

@@ -1,6 +1,6 @@
-package charades.scenes.components;
+package paint.scenes.components;
 
-import charades.painting.Colors;
+import paint.painting.Colors;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;

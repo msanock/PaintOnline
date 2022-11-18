@@ -1,10 +1,8 @@
-package charades.painting;
+package paint.painting;
 
-import charades.packets.DrawPacket;
-import charades.scenes.components.SimpleColorPicker;
+import paint.scenes.components.SimpleColorPicker;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
 import java.util.concurrent.ConcurrentLinkedQueue;

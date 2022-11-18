@@ -1,6 +1,6 @@
-package charades.painting;
+package paint.painting;
 
-import charades.scenes.components.SimpleColorPicker;
+import paint.scenes.components.SimpleColorPicker;
 import javafx.scene.canvas.Canvas;
 
 public class ActionHandler {

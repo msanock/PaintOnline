@@ -1,4 +1,4 @@
-package charades.painting;
+package paint.painting;
 
 import javafx.util.Pair;
 

@@ -1,4 +1,4 @@
-package charades;
+package paint;
 
 
 public class Timer {

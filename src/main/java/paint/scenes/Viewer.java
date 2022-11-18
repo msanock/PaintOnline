@@ -1,4 +1,4 @@
-package charades.scenes;
+package paint.scenes;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;

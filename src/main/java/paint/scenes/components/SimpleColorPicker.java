@@ -1,17 +1,13 @@
-package charades.scenes.components;
+package paint.scenes.components;
 
-import charades.painting.ActionHandler;
-import charades.painting.ActionTypes;
-import charades.painting.Colors;
-import charades.painting.DrawAction;
-import charades.scenes.Painter;
-import charades.scenes.components.ColorButton;
+import paint.painting.ActionHandler;
+import paint.painting.ActionTypes;
+import paint.painting.Colors;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class SimpleColorPicker extends TilePane {

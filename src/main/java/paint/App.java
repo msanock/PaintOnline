@@ -1,11 +1,8 @@
-package charades;
+package paint;
 
-import charades.painting.ActionTypes;
-import charades.painting.PerformServerAction;
-import charades.painting.PerformServerDrawAction;
-import charades.scenes.Painter;
-import charades.serverConnection.MyClient;
-import charades.serverConnection.ServerClient;
+import paint.painting.ActionTypes;
+import paint.painting.PerformServerDrawAction;
+import paint.serverConnection.MyClient;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +11,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
