@@ -1,6 +1,5 @@
 package connection.protocol;
 
-// Tutaj mozna editowac
 public enum Protocol {
     //-- BOTH --//
     CREATE_PIORO,    //  ID_PIORA,

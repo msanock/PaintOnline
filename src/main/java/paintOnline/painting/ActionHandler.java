@@ -18,10 +18,9 @@ public class ActionHandler {
     public ActionHandler(Canvas canvas, SimpleColorPicker cp) {
         Actions.currentAction = Actions.drawAction = new DrawAction(canvas, cp);
         Actions.rubberAction = new RubberAction(canvas);
-        //serverClient = new ServerClient();
     }
 
-    public InteractiveAction getCurrentAction() {
+    public static InteractiveAction getCurrentAction() {
         return Actions.currentAction;
     }
 

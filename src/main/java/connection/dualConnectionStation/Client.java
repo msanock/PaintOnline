@@ -99,7 +99,7 @@ public class Client extends BaseDualConnectionStation {
         try {
             ProtocolMessage.PureData[] messages = new ProtocolMessage.PureData[messagesToServer.size()];
             for (int i = 0; i < messages.length; i++) {
-            //    Logger.getAnonymousLogger().info("SENT : " + messagesToServer.get(i).getProtocol());
+                //    Logger.getAnonymousLogger().info("SENT : " + messagesToServer.get(i).getProtocol());
                 messages[i] = messagesToServer.get(i).toPureData();
             }
             objectOutputStream.writeObject(new MessagePacket(messages));

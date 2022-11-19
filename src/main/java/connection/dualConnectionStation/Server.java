@@ -46,7 +46,6 @@ public class Server extends BaseDualConnectionStation {
                     synchronized (connectedClients) {
                         connectedClients.add(socketCompactData);
                     }
-                    TimeUnit.MILLISECONDS.sleep(200);
                     SocketStreamReader streamReader = new SocketStreamReader(clientSocket, downlink);
                     streamReader.start();
                     downlink.onNewSocketConnection(clientSocket);
@@ -68,15 +67,15 @@ public class Server extends BaseDualConnectionStation {
         synchronized (connectedClients) {
             connectedClients.removeIf(Reader::isClosed);
             connectedClients.forEach(
-                reader -> {
-                    streamBuffer.forEach(
-                        (socket, protocolMessages) -> {
-                            if (reader.socket() == socket) {
-                                sendAll(reader, protocolMessages);
-                            }
-                        }
-                    );
-                }
+                    reader -> {
+                        streamBuffer.forEach(
+                                (socket, protocolMessages) -> {
+                                    if (reader.socket() == socket) {
+                                        sendAll(reader, protocolMessages);
+                                    }
+                                }
+                        );
+                    }
             );
         }
         streamBuffer.clear();
@@ -89,8 +88,8 @@ public class Server extends BaseDualConnectionStation {
             for (int i = 0; i < messagesArray.length; i++) {
                 messagesArray[i] = messagesToClient.get(i).toPureData();
                 Logger.getAnonymousLogger()
-                    .info("SENT : " + messagesToClient.get(i).getProtocol() +
-                        ", for " + messagesToClient.get(i).getRoomId());
+                        .info("SENT : " + messagesToClient.get(i).getProtocol() +
+                                ", for " + messagesToClient.get(i).getRoomId());
 
             }
             client.stream().writeObject(new MessagePacket(messagesArray));
@@ -118,8 +117,8 @@ public class Server extends BaseDualConnectionStation {
     public List<Socket> getReceivers() {
         synchronized (connectedClients) {
             return connectedClients.stream()
-                .map(Reader::socket)
-                .toList();
+                    .map(Reader::socket)
+                    .toList();
         }
     }
 }

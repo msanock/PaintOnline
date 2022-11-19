@@ -1,7 +1,7 @@
 package paintOnline;
 
 import paintOnline.painting.ActionTypes;
-import paintOnline.painting.PerformServerDrawAction;
+import paintOnline.painting.ServerActionHandler;
 import paintOnline.serverConnection.MyClient;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
@@ -33,7 +34,7 @@ public class App extends Application {
         }).start();
     }
 
-    public static void setCanvas(Canvas canvas){
+    public static void setCanvas(Canvas canvas) {
         App.canvas = canvas;
     }
 
@@ -71,11 +72,10 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //getNickname();
-        connect();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("scenes/Painter.fxml"));
         //root = new StackPane();
-       // root.getChildren().add(fxmlLoader.load());
+        // root.getChildren().add(fxmlLoader.load());
         root = fxmlLoader.load();
 //        fxmlLoader = new FXMLLoader(App.class.getResource("scenes/Painter.fxml"))
 //        root.getChildren().add
@@ -85,29 +85,35 @@ public class App extends Application {
         stage.setMinHeight(800);
         stage.setMinWidth(600);
         stage.show();
+        connect();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-    Map<Integer, PerformServerDrawAction> idToPioro;
+    Map<Integer, ServerActionHandler> idToPioro = new HashMap<>();
 
     // FROM SERVER
     public void createPioro(int id) {
-        idToPioro.put(id, new PerformServerDrawAction(canvas));
+        System.out.println("CREATE PIORO " + id);
+        idToPioro.put(id, new ServerActionHandler(canvas));
     }
 
     public void deletePioro(int id) {
+        System.out.println("DELETE PIORO " + id);
         idToPioro.remove(id);
     }
 
     public void moveToPoint(int id, Pair<Double, Double> point) {
+        System.out.println("MOVE PIORO " + id);
         idToPioro.get(id).performAction(point);
     }
 
-    // TUTAJ musi byc jakis type ...
     public void setType(int id, ActionTypes type) {
+        System.out.println("SET PIORO " + id);
+        idToPioro.get(id).reset();
+        idToPioro.get(id).setCurrentAction(type);
 
     }
 

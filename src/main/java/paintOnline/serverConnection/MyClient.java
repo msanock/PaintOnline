@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MyClient implements MessageApplier {
 
-    private final int roomId = 42;
+    private final int roomId = 41;
     private final Gates gates = new Gates(new Client(), this);
     private static final int TICK_PER_SECOND = 200;
     private final App app;
@@ -32,19 +32,16 @@ public class MyClient implements MessageApplier {
 
     public void start() {
         initGates();
-        // to jest zwykla petla, ty musisz tylko ->
         long currentTime = System.currentTimeMillis();
-        try {
-            while (true) {
-                long deltaTime = System.currentTimeMillis() - currentTime;
-                currentTime += deltaTime;
-                gates.tick(deltaTime); // <- wkleic ta linijke w petle i podac czas ktory minal od ostatniego ticka
-                try {
-                    TimeUnit.MILLISECONDS.sleep(Math.round(1000. / TICK_PER_SECOND));
-                } catch (InterruptedException ignore) {
-                }
+        while (true) {
+            long deltaTime = System.currentTimeMillis() - currentTime;
+            currentTime += deltaTime;
+            gates.tick(deltaTime);
+            try {
+                TimeUnit.MILLISECONDS.sleep(Math.round(1000. / TICK_PER_SECOND));
+            } catch (InterruptedException ignore) {
+                System.out.println(ignore);
             }
-        } catch (Exception e) {
         }
     }
 
@@ -70,7 +67,6 @@ public class MyClient implements MessageApplier {
 
     public void setTypeOfMyPiora(ActionTypes type) {
         var setType = new SetType(idOfMyPioro, type);
-
         gates.sendWithoutCheck(Protocol.SET_TYPE, roomId, setType);
     }
 
@@ -99,7 +95,7 @@ public class MyClient implements MessageApplier {
         switch (protocol) {
             case CREATE_PIORO: {
                 var createPioroData = (CreatePioroData) data;
-                app.createPioro(createPioroData.id);
+                app.createPioro(createPioroData.id);//nickname
                 break;
             }
             case DELETE_PIORO: {

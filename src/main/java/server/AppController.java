@@ -31,7 +31,7 @@ public class AppController implements MessageApplier {
         gates.setOnGatesLostSocketEvent(socket -> {
                     var idOfPioro = socketToPioroIdAndRoom.get(socket).getKey();
                     var idOfRoom = socketToPioroIdAndRoom.get(socket).getValue();
-                    gates.sendWithoutCheck(Protocol.DELETE_PIORO, idOfRoom, new DeletePioroData(idOfPioro));
+                    applyMessage(new ProtocolMessage(Protocol.DELETE_PIORO, idOfRoom, new DeletePioroData(idOfPioro)));
                 }
         );
         long currentTime = System.currentTimeMillis();
@@ -46,6 +46,7 @@ public class AppController implements MessageApplier {
                 }
             }
         } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
@@ -78,13 +79,14 @@ public class AppController implements MessageApplier {
             }
 
             case CREATE_PIORO, MOVE_TO_POINT, SET_TYPE, DELETE_PIORO -> {
-                System.out.println("%");
                 if (protocol == Protocol.CREATE_PIORO) {
-                    socketToPioroIdAndRoom.put(message.getOwner(),
+                    socketToPioroIdAndRoom.put(
+                            message.getOwner(),
                             new Pair<>((
                                     (CreatePioroData) data).id
                                     , message.getRoomId()
-                            ));
+                            )
+                    );
                 }
                 if (!history.containsKey(message.getRoomId())) {
                     var list = new LinkedList<ProtocolMessage.PureData>();

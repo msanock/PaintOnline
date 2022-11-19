@@ -106,7 +106,7 @@ public class Gates implements Downlink {
 
     @Override
     public void onLostSocketConnection(Socket socket) {
-        sendFilters.remove(socket); 
+        sendFilters.remove(socket);
         if (onGatesLostSocketEvent != null) {
             onGatesLostSocketEvent.accept(socket);
         }

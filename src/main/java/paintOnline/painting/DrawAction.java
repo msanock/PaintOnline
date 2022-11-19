@@ -19,13 +19,10 @@ public class DrawAction extends InteractiveAction {
     DrawAction(Canvas canvas, SimpleColorPicker scp) {
         super(canvas);
         this.scp = scp;
-        continues = new AtomicBoolean(false);
-        queue = new ConcurrentLinkedQueue<>();
     }
 
     @Override
     public void handleOnMousePressed(MouseEvent e) {
-        continues.set(true);
 
         try {
             currentColor = scp.getCurrentColor();
@@ -36,22 +33,20 @@ public class DrawAction extends InteractiveAction {
             return;
         }
         //isActive = true;
-        queue.add(new Pair<>(e.getX(), e.getY()));
         gc.beginPath();
         synchronized (gc) {
             gc.setStroke(currentColor.getColor());
             gc.setLineWidth(currentLineWidth);
             gc.lineTo(e.getX(), e.getY());
         }
-        System.out.println(e.getX()+ "--" + e.getY());
+//        System.out.println(e.getX()+ "--" + e.getY());
     }
 
     @Override
     public void handleOnMouseDragged(MouseEvent e) {
         //if (!isActive) return;
 
-        queue.add(new Pair<>(e.getX(), e.getY()));
-        System.out.println(e.getX()+ "--" + e.getY());
+        //     System.out.println(e.getX()+ "--" + e.getY());
         synchronized (gc) {
             gc.setStroke(currentColor.getColor());
             gc.setLineWidth(currentLineWidth);
@@ -64,9 +59,7 @@ public class DrawAction extends InteractiveAction {
     public void handleOnMouseReleased(MouseEvent e) {
         if (!isActive) return;
         gc.lineTo(e.getX(), e.getY());
-        queue.add(new Pair<>(e.getX(), e.getY()));
-        continues.set(false);
-        System.out.println(e.getX()+ "--" + e.getY());
+//        System.out.println(e.getX()+ "--" + e.getY());
         synchronized (gc) {
             gc.setStroke(currentColor.getColor());
             gc.setLineWidth(currentLineWidth);
