@@ -4,6 +4,7 @@ import paintOnline.scenes.components.SimpleColorPicker;
 import javafx.scene.canvas.Canvas;
 
 public class ActionHandler {
+    static SimpleColorPicker cp;
 
     static class Actions{
         static InteractiveAction currentAction;
@@ -14,10 +15,17 @@ public class ActionHandler {
     }
     //static ServerClient serverClient;
 
-
     public ActionHandler(Canvas canvas, SimpleColorPicker cp) {
+        ActionHandler.cp = cp;
         Actions.currentAction = Actions.drawAction = new DrawAction(canvas, cp);
         Actions.rubberAction = new RubberAction(canvas);
+    }
+
+    public static ActionParameters getTypes(){
+        if(Actions.currentAction.getClass() == DrawAction.class)
+            return new ActionParameters(ActionTypes.drawAction, Actions.drawAction.getDrawSize(), cp.getCurrentColor());
+        else
+            return new ActionParameters(ActionTypes.rubberAction, Actions.rubberAction.getRubberSize(), null);
     }
 
     public static InteractiveAction getCurrentAction() {

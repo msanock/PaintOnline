@@ -29,11 +29,10 @@ public class AppController implements MessageApplier {
     public void start() {
         gates.connect();
         gates.setOnGatesLostSocketEvent(socket -> {
-                    var idOfPioro = socketToPioroIdAndRoom.get(socket).getKey();
-                    var idOfRoom = socketToPioroIdAndRoom.get(socket).getValue();
-                    applyMessage(new ProtocolMessage(Protocol.DELETE_PIORO, idOfRoom, new DeletePioroData(idOfPioro)));
-                }
-        );
+            var idOfPioro = socketToPioroIdAndRoom.get(socket).getKey();
+            var idOfRoom = socketToPioroIdAndRoom.get(socket).getValue();
+            applyMessage(new ProtocolMessage(Protocol.DELETE_PIORO, idOfRoom, new DeletePioroData(idOfPioro)));
+        });
         long currentTime = System.currentTimeMillis();
         try {
             while (true) {

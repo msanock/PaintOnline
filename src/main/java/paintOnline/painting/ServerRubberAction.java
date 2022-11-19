@@ -16,4 +16,8 @@ public class ServerRubberAction extends ServerAction {
             gc.clearRect(point.getKey()+10 - currentSize / 2, point.getValue()+10 - currentSize / 2, currentSize, currentSize);
         }
     }
+
+    public void setParameters(double size) {
+        this.currentSize = size;
+    }
 }

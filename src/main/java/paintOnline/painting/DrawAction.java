@@ -5,16 +5,12 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Pair;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DrawAction extends InteractiveAction {
     private final SimpleColorPicker scp;
     boolean isActive;
     private Colors currentColor;
     double currentLineWidth;
-
-
 
     DrawAction(Canvas canvas, SimpleColorPicker scp) {
         super(canvas);
@@ -74,4 +70,11 @@ public class DrawAction extends InteractiveAction {
 
     }
 
+    public double getDrawSize() {
+        return currentLineWidth;
+    }
+
+    public Colors getColor() {
+        return currentColor;
+    }
 }

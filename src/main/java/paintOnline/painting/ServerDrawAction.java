@@ -31,4 +31,9 @@ public class ServerDrawAction extends ServerAction {
             lastPoint = newPoint;
         }
     }
+
+    public void setParameters(double size, Colors color) {
+        currentLineWidth = size;
+        currentColor = color.getColor();
+    }
 }

@@ -82,7 +82,7 @@ public class Painter implements Initializable {
 
 
     public void handleCanvasOnMousePressed(MouseEvent e){
-        myClient.setTypeOfMyPiora((ActionHandler.getCurrentAction().getClass() == ActionTypes.drawAction.getAction())? ActionTypes.drawAction : ActionTypes.rubberAction);
+        myClient.setTypeOfMyPiora(ActionHandler.getTypes());
         myClient.moveMyPioroToPoint(new Pair<>(e.getX()+10,e.getY()+10));
         actionHandler.getCurrentAction().handleOnMousePressed(e);
     }

@@ -1,6 +1,7 @@
 package paintOnline.serverConnection;
 
 import paintOnline.App;
+import paintOnline.painting.ActionParameters;
 import paintOnline.painting.ActionTypes;
 import connection.dualConnectionStation.Client;
 import connection.gates.Gates;
@@ -65,7 +66,7 @@ public class MyClient implements MessageApplier {
         gates.sendWithoutCheck(Protocol.MOVE_TO_POINT, roomId, moveToPoint);
     }
 
-    public void setTypeOfMyPiora(ActionTypes type) {
+    public void setTypeOfMyPiora(ActionParameters type) {
         var setType = new SetType(idOfMyPioro, type);
         gates.sendWithoutCheck(Protocol.SET_TYPE, roomId, setType);
     }
@@ -110,7 +111,7 @@ public class MyClient implements MessageApplier {
             }
             case SET_TYPE: {
                 var setType = (SetType) data;
-                app.setType(setType.id, setType.type);
+                app.setType(setType.id, setType.info);
                 break;
             }
         }

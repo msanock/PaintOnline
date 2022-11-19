@@ -11,7 +11,7 @@ public class ServerActionHandler {
         ServerAction currentAction;
         final ServerDrawAction drawAction;
         final ServerRubberAction rubberAction;
-//        RedoAction redoAction;
+        //        RedoAction redoAction;
 //        UndoAction undoAction;
         ServerActions(Canvas canvas){
             currentAction = drawAction = new ServerDrawAction(canvas);
@@ -24,8 +24,15 @@ public class ServerActionHandler {
         serverActions.currentAction.reset();
     }
 
-    public void setCurrentAction(ActionTypes action) {
-        serverActions.currentAction = (action.getAction() == ActionHandler.Actions.drawAction.getClass()) ? serverActions.drawAction : serverActions.rubberAction;
+    public void setCurrentAction(ActionParameters action) {
+        if (action.type.getAction() == ActionHandler.Actions.drawAction.getClass()) {
+            serverActions.currentAction = serverActions.drawAction;
+            serverActions.drawAction.setParameters(action.size, action.color);
+        }
+        else {
+            serverActions.currentAction = serverActions.rubberAction;
+            serverActions.rubberAction.setParameters(action.size);
+        }
     }
 
     public void performAction(Pair<Double, Double> point) {

@@ -1,5 +1,6 @@
 package paintOnline;
 
+import paintOnline.painting.ActionParameters;
 import paintOnline.painting.ActionTypes;
 import paintOnline.painting.ServerActionHandler;
 import paintOnline.serverConnection.MyClient;
@@ -19,11 +20,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class App extends Application {
     private static Pane root;
     public static MyClient myClient;
     public static Canvas canvas;
+
+    ConcurrentMap<Integer, ServerActionHandler> idToPioro = new ConcurrentHashMap<>();
 
     public void connect() {
         new Thread(() -> {
@@ -92,12 +97,10 @@ public class App extends Application {
         launch();
     }
 
-    Map<Integer, ServerActionHandler> idToPioro = new HashMap<>();
-
     // FROM SERVER
     public void createPioro(int id) {
-        System.out.println("CREATE PIORO " + id);
         idToPioro.put(id, new ServerActionHandler(canvas));
+        System.out.println("CREATE PIORO " + id);
     }
 
     public void deletePioro(int id) {
@@ -110,8 +113,10 @@ public class App extends Application {
         idToPioro.get(id).performAction(point);
     }
 
-    public void setType(int id, ActionTypes type) {
+    // TUTAJ musi byc jakis type ...
+    public void setType(int id, ActionParameters type) {
         System.out.println("SET PIORO " + id);
+        System.out.println(idToPioro.get(id));
         idToPioro.get(id).reset();
         idToPioro.get(id).setCurrentAction(type);
 

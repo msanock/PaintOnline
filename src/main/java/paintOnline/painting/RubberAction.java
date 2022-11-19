@@ -30,6 +30,10 @@ public class RubberAction extends InteractiveAction{
 
     }
 
+    public double getRubberSize() {
+        return size;
+    }
+
 //    @Override
 //    public void performAction() {
 //
