@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import paintOnline.scenes.Painter;
 
 public class ColorButton extends Button {
     private final Colors buttonColor;
@@ -27,6 +28,7 @@ public class ColorButton extends Button {
     }
 
     public void select(){
+        Painter.unselectRubber();
         this.setBorder(new Border(new BorderStroke(Paint.valueOf(borderColor.toString()), BorderStrokeStyle.SOLID, new CornerRadii(17.5), new BorderWidths(3))));
     }
 

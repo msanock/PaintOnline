@@ -116,7 +116,6 @@ public class App extends Application {
     // TUTAJ musi byc jakis type ...
     public void setType(int id, ActionParameters type) {
         System.out.println("SET PIORO " + id);
-        System.out.println(idToPioro.get(id));
         idToPioro.get(id).reset();
         idToPioro.get(id).setCurrentAction(type);
 

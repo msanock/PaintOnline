@@ -1,5 +1,7 @@
 package paintOnline.painting;
 
+import javafx.scene.control.Slider;
+import paintOnline.scenes.Painter;
 import paintOnline.scenes.components.SimpleColorPicker;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
@@ -31,6 +33,7 @@ public class DrawAction extends InteractiveAction {
         //isActive = true;
         gc.beginPath();
         synchronized (gc) {
+            currentLineWidth = ActionHandler.sizeSlider.getValue();
             gc.setStroke(currentColor.getColor());
             gc.setLineWidth(currentLineWidth);
             gc.lineTo(e.getX(), e.getY());

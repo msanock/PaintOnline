@@ -11,6 +11,7 @@ public class RubberAction extends InteractiveAction{
 
     @Override
     public void handleOnMousePressed(MouseEvent e) {
+        size = ActionHandler.sizeSlider.getValue();
         gc.clearRect((e.getX() - size) / 2, (e.getY() - size) / 2, size, size);
     }
 
