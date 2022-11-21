@@ -92,17 +92,17 @@ public class Painter implements Initializable {
 
     public void handleCanvasOnMousePressed(MouseEvent e){
         myClient.setTypeOfMyPiora(ActionHandler.getTypes());
-        myClient.moveMyPioroToPoint(new Pair<>(e.getX()+10,e.getY()+10));
+        myClient.moveMyPioroToPoint(new Pair<>(e.getX(),e.getY()));
         actionHandler.getCurrentAction().handleOnMousePressed(e);
     }
 
     public void handleCanvasOnMouseDragged(MouseEvent e) {
-        myClient.moveMyPioroToPoint(new Pair<>(e.getX()+10,e.getY()+10));
+        myClient.moveMyPioroToPoint(new Pair<>(e.getX(),e.getY()));
         actionHandler.getCurrentAction().handleOnMouseDragged(e);
     }
 
     public void handleCanvasOnMouseReleased(MouseEvent e) {
-        myClient.moveMyPioroToPoint(new Pair<>(e.getX()+10,e.getY()+10));
+        myClient.moveMyPioroToPoint(new Pair<>(e.getX(),e.getY()));
         actionHandler.getCurrentAction().handleOnMouseReleased(e);
     }
 
