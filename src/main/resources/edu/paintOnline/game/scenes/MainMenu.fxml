@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainMenuPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.paintOnline.game.scenes.MainMenu">
+    <center>
+        <VBox alignment="CENTER" spacing="40.0">
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@icons/tcs.png" />
+                </image>
+                <VBox.margin>
+                    <Insets bottom="50.0" />
+                </VBox.margin>
+            </ImageView>
+            <Button onAction="#createNewRoom" onMouseEntered="#handleEntered" onMouseExited="#handleExited" prefHeight="50.0" text="CREATE NEW ROOM" />
+            <Button onMouseEntered="#handleEntered" onMouseExited="#handleExited" prefHeight="50.0" text="JOIN ROOM" />
+            <Button onAction="#handleExitButtonAction" onMouseEntered="#handleEntered" onMouseExited="#handleExited" prefHeight="50.0" text="EXIT" />
+        </VBox>
+    </center>
+    <top>
+        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button  minHeight="100" minWidth="100"  onMouseEntered="#handleEntered" onMouseExited="#handleExited">-->
+                </Button>
+            </children>
+            <BorderPane.margin>
+                <Insets right="50.0" top="50.0" />
+            </BorderPane.margin>
+        </HBox>
+    </top>
+    <stylesheets>
+        <URL value="@stylesheets/MainMenu.css" />
+    </stylesheets>
+</BorderPane>

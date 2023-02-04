@@ -1,16 +1,16 @@
-module com.example.charades {
+module edu.paintOnline {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.logging;
     requires java.datatransfer;
 
 
-    opens paintOnline to javafx.fxml;
-    exports paintOnline;
-    exports paintOnline.scenes;
-    opens paintOnline.scenes to javafx.fxml;
-    exports paintOnline.scenes.components;
-    opens paintOnline.scenes.components to javafx.fxml;
-    opens connection;
+    opens edu.paintOnline.game to javafx.fxml;
+    exports edu.paintOnline.game;
+    exports edu.paintOnline.game.scenes;
+    opens edu.paintOnline.game.scenes to javafx.fxml;
+    exports edu.paintOnline.game.scenes.components;
+    opens edu.paintOnline.game.scenes.components to javafx.fxml;
+    opens edu.paintOnline.connection;
 
 }

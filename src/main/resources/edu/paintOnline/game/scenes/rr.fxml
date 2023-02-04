@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!--<?import edu.paintOnline.game.scenes.components.SimpleColorPicker?>-->
+
+<VBox fx:id="vBox" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.paintOnline.game.scenes.Painter">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <HBox alignment="CENTER" minWidth="500.0" prefWidth="211.0">
+        <children>
+
+            <Label text="Paint!!!">
+                <HBox.margin>
+                    <Insets right="50.0" />
+                </HBox.margin>
+                <font>
+                    <Font name="Comic Sans MS Bold" size="24.0" />
+                </font></Label>
+            <ProgressBar fx:id="pb" prefHeight="17.0" prefWidth="300.0" progress="0.0" />
+        </children>
+    </HBox>
+   <Pane>
+      <children>
+          <Canvas fx:id="canvas" height="600.0" onMouseDragged="#handleCanvasOnMouseDragged" onMousePressed="#handleCanvasOnMousePressed" onMouseReleased="#handleCanvasOnMouseReleased" width="500.0" />
+      </children>
+   </Pane>
+    <HBox alignment="CENTER" spacing="50.0">
+        <!--        <SimpleColorPicker fx:id="simpleColorPicker"/>-->
+        <Button fx:id="rubberButton" onAction="#handleRubberButton">
+            <graphic>
+                <ImageView>
+                    <Image url="@icons/rubber.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+    </HBox>
+   <DialogPane />
+</VBox>
