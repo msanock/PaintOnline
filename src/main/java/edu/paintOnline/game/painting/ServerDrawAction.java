@@ -5,8 +5,8 @@ import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
 public class ServerDrawAction extends ServerAction {
-    Color currentColor = Color.BLACK;
-    double currentLineWidth = 2.0;
+    Color currentColor;
+    double currentLineWidth;
 
 
     Pair<Double,Double> lastPoint;

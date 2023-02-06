@@ -82,7 +82,8 @@ public class Painter implements Initializable {
     }
 
     public static void unselectRubber(){
-        rb.setBorder(null);
+        if (rb != null)
+            rb.setBorder(null);
     }
 
 

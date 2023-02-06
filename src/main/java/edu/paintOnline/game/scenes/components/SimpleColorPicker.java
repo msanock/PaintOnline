@@ -10,16 +10,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SimpleColorPicker extends TilePane {
     private static ColorButton currentColorButton;
+    private static List<ColorButton> colorButtons;
 
     public SimpleColorPicker(){
         super();
         this.setHgap(3);
         this.setVgap(3);
+        colorButtons = new ArrayList<>();
         for (var col : Colors.values()){
-            this.getChildren().add(new ColorButton(col));
+            colorButtons.add(new ColorButton(col));
         }
+        this.getChildren().addAll(colorButtons);
+        currentColorButton = colorButtons.get(0);
+        currentColorButton.select();
     }
 
     public static void handleEntered(MouseEvent e){

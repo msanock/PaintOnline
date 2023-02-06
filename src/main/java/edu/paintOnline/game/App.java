@@ -28,12 +28,13 @@ public class App extends Application {
     ConcurrentMap<Integer, ServerActionHandler> idToPioro = new ConcurrentHashMap<>();
 
     public void connect() {
-        new Thread(() -> {
-
+        Thread connection = new Thread(() -> {
             Random rand = new Random(System.currentTimeMillis());
-            myClient = new MyClient(this, rand.nextInt()); // generowane dla kazdego clienta inne
+            myClient = new MyClient(this, rand.nextInt());
             myClient.start();
-        }).start();
+        });
+        connection.setDaemon(true);
+        connection.start();
     }
 
     public static void setCanvas(Canvas canvas) {
@@ -110,7 +111,7 @@ public class App extends Application {
         idToPioro.get(id).performAction(point);
     }
 
-    // TUTAJ musi byc jakis type ...
+
     public void setType(int id, ActionParameters type) {
         System.out.println("SET PIORO " + id);
         idToPioro.get(id).reset();

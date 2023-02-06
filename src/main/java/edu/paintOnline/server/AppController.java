@@ -58,8 +58,6 @@ public class AppController implements MessageApplier {
         switch (protocol) {
             case SUBSCRIBE_FOR -> {
                 gates.setSendFilter(message.getOwner(), SendFilters.sendOnlyIfSubscribed((SubscribeRequest) data));
-                System.out.println(message.getRoomId() + "<- ten facet chce sluchac tylko "
-                        + ((SubscribeRequest) data).roomsToSubscribeFor().get(0));
 
                 if (history.containsKey(message.getRoomId())) {
                     gates.sendWithoutCheck(
