@@ -54,11 +54,7 @@ public class Client extends BaseDualConnectionStation {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(Objects.equals(host, ConnectionSettings.HOST)){
-            host = ConnectionSettings.HOST2;
-        }else{
-            host = ConnectionSettings.HOST;
-        }
+        host = ConnectionSettings.HOST;
     }
 
     @Override
