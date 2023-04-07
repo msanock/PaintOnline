@@ -23,11 +23,11 @@ public class MyClient implements MessageApplier {
     private final Gates gates = new Gates(new Client(), this);
     private static final int TICK_PER_SECOND = 200;
     private final App app;
-    private int idOfMyPioro;
+    private int idOfMyPen;
 
-    public MyClient(App app, int idOfMyPioro) {
+    public MyClient(App app, int idOfMyPen) {
         this.app = app;
-        this.idOfMyPioro = idOfMyPioro;
+        this.idOfMyPen = idOfMyPen;
     }
 
     public void start() {
@@ -60,13 +60,13 @@ public class MyClient implements MessageApplier {
     }
 
 
-    public void moveMyPioroToPoint(Pair<Double, Double> point) {
-        var moveToPoint = new MoveToPointData(idOfMyPioro, point);
+    public void moveMyPenToPoint(Pair<Double, Double> point) {
+        var moveToPoint = new MoveToPointData(idOfMyPen, point);
         gates.sendWithoutCheck(Protocol.MOVE_TO_POINT, roomId, moveToPoint);
     }
 
     public void setTypeOfMyPiora(ActionParameters type) {
-        var setType = new SetType(idOfMyPioro, type);
+        var setType = new SetType(idOfMyPen, type);
         gates.sendWithoutCheck(Protocol.SET_TYPE, roomId, setType);
     }
 
@@ -80,27 +80,27 @@ public class MyClient implements MessageApplier {
                 var history = (LinkedList<ProtocolMessage.PureData>) data;
                 for (ProtocolMessage.PureData pureData : history) {
                     var historyMessage = new ProtocolMessage(pureData);
-                    applyPioroActions(historyMessage.getProtocol(), historyMessage.getData());
+                    applyPenActions(historyMessage.getProtocol(), historyMessage.getData());
                 }
-                var createPioro = new CreatePioroData(idOfMyPioro);
-                gates.sendWithoutCheck(Protocol.CREATE_PIORO, roomId, createPioro);
+                var createPen = new CreatePenData(idOfMyPen);
+                gates.sendWithoutCheck(Protocol.CREATE_PEN, roomId, createPen);
             }
             default:
-                applyPioroActions(protocol, data);
+                applyPenActions(protocol, data);
         }
         return true;
     }
 
-    private void applyPioroActions(Protocol protocol, Serializable data) {
+    private void applyPenActions(Protocol protocol, Serializable data) {
         switch (protocol) {
-            case CREATE_PIORO: {
-                var createPioroData = (CreatePioroData) data;
-                app.createPioro(createPioroData.id);//nickname
+            case CREATE_PEN: {
+                var createPenData = (CreatePenData) data;
+                app.createPen(createPenData.id);//nickname
                 break;
             }
-            case DELETE_PIORO: {
-                var deletePioroData = (DeletePioroData) data;
-                app.deletePioro(deletePioroData.id);
+            case DELETE_PEN: {
+                var deletePenData = (DeletePenData) data;
+                app.deletePen(deletePenData.id);
                 break;
             }
             case MOVE_TO_POINT: {

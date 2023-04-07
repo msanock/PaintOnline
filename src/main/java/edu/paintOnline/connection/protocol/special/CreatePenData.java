@@ -1,12 +1,12 @@
 package edu.paintOnline.connection.protocol.special;
 
+
 import java.io.Serializable;
 
-public class DeletePioroData implements Serializable {
+public class CreatePenData implements Serializable {
     public int id;
 
-    public DeletePioroData(int id) {
+    public CreatePenData(int id) {
         this.id = id;
     }
-
 }

@@ -6,8 +6,8 @@ import edu.paintOnline.connection.gates.SendFilters;
 import edu.paintOnline.connection.protocol.MessageApplier;
 import edu.paintOnline.connection.protocol.Protocol;
 import edu.paintOnline.connection.protocol.ProtocolMessage;
-import edu.paintOnline.connection.protocol.special.CreatePioroData;
-import edu.paintOnline.connection.protocol.special.DeletePioroData;
+import edu.paintOnline.connection.protocol.special.CreatePenData;
+import edu.paintOnline.connection.protocol.special.DeletePenData;
 import edu.paintOnline.connection.protocol.special.SubscribeRequest;
 import javafx.util.Pair;
 
@@ -28,9 +28,9 @@ public class AppController implements MessageApplier {
     public void start() {
         gates.connect();
         gates.setOnGatesLostSocketEvent(socket -> {
-            var idOfPioro = socketToPioroIdAndRoom.get(socket).getKey();
-            var idOfRoom = socketToPioroIdAndRoom.get(socket).getValue();
-            applyMessage(new ProtocolMessage(Protocol.DELETE_PIORO, idOfRoom, new DeletePioroData(idOfPioro)));
+            var idOfPen = socketToPenIdAndRoom.get(socket).getKey();
+            var idOfRoom = socketToPenIdAndRoom.get(socket).getValue();
+            applyMessage(new ProtocolMessage(Protocol.DELETE_PEN, idOfRoom, new DeletePenData(idOfPen)));
         });
         long currentTime = System.currentTimeMillis();
         try {
@@ -49,7 +49,7 @@ public class AppController implements MessageApplier {
     }
 
     Map<Integer, LinkedList<ProtocolMessage.PureData>> history = new HashMap<>();
-    Map<Socket, Pair<Integer, Integer>> socketToPioroIdAndRoom = new HashMap<>();
+    Map<Socket, Pair<Integer, Integer>> socketToPenIdAndRoom = new HashMap<>();
 
     @Override
     public boolean applyMessage(ProtocolMessage message) {
@@ -74,12 +74,12 @@ public class AppController implements MessageApplier {
                 }
             }
 
-            case CREATE_PIORO, MOVE_TO_POINT, SET_TYPE, DELETE_PIORO -> {
-                if (protocol == Protocol.CREATE_PIORO) {
-                    socketToPioroIdAndRoom.put(
+            case CREATE_PEN, MOVE_TO_POINT, SET_TYPE, DELETE_PEN -> {
+                if (protocol == Protocol.CREATE_PEN) {
+                    socketToPenIdAndRoom.put(
                             message.getOwner(),
                             new Pair<>((
-                                    (CreatePioroData) data).id
+                                    (CreatePenData) data).id
                                     , message.getRoomId()
                             )
                     );

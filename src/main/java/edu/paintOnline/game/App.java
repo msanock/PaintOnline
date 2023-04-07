@@ -25,7 +25,7 @@ public class App extends Application {
     public static MyClient myClient;
     public static Canvas canvas;
 
-    ConcurrentMap<Integer, ServerActionHandler> idToPioro = new ConcurrentHashMap<>();
+    ConcurrentMap<Integer, ServerActionHandler> idToPen = new ConcurrentHashMap<>();
 
     public void connect() {
         Thread connection = new Thread(() -> {
@@ -62,14 +62,6 @@ public class App extends Application {
             entered = result.get();
         }
         return;
-
-//        ButtonType type = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-//        //Setting the content of the dialog
-//        dialog.setContentText("This is a sample dialog");
-//        //Adding buttons to the dialog pane
-//        dialog.getDialogPane().getButtonTypes().add(type);
-//        //Setting the label
-//        dialog.showAndWait();
     }
 
     @Override
@@ -77,11 +69,7 @@ public class App extends Application {
         //getNickname();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("scenes/Painter.fxml"));
-        //root = new StackPane();
-        // root.getChildren().add(fxmlLoader.load());
         root = fxmlLoader.load();
-//        fxmlLoader = new FXMLLoader(App.class.getResource("scenes/Painter.fxml"))
-//        root.getChildren().add
         Scene scene = new Scene(root);
         stage.setTitle("Hello!");
         stage.setScene(scene);
@@ -96,26 +84,26 @@ public class App extends Application {
     }
 
     // FROM SERVER
-    public void createPioro(int id) {
-        idToPioro.put(id, new ServerActionHandler(canvas));
-        System.out.println("CREATE PIORO " + id);
+    public void createPen(int id) {
+        idToPen.put(id, new ServerActionHandler(canvas));
+        System.out.println("CREATE PEN " + id);
     }
 
-    public void deletePioro(int id) {
-        System.out.println("DELETE PIORO " + id);
-        idToPioro.remove(id);
+    public void deletePen(int id) {
+        System.out.println("DELETE PEN " + id);
+        idToPen.remove(id);
     }
 
     public void moveToPoint(int id, Pair<Double, Double> point) {
-        System.out.println("MOVE PIORO " + id);
-        idToPioro.get(id).performAction(point);
+        System.out.println("MOVE PEN " + id);
+        idToPen.get(id).performAction(point);
     }
 
 
     public void setType(int id, ActionParameters type) {
-        System.out.println("SET PIORO " + id);
-        idToPioro.get(id).reset();
-        idToPioro.get(id).setCurrentAction(type);
+        System.out.println("SET PEN " + id);
+        idToPen.get(id).reset();
+        idToPen.get(id).setCurrentAction(type);
 
     }
 

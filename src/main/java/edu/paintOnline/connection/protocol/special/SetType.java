@@ -18,8 +18,8 @@ public class SetType implements Serializable {
         this.info = info;
     }
 
-    public SetType(int idOfMyPioro, ActionTypes type, double size, Colors color) {
-        id = idOfMyPioro;
+    public SetType(int idOfMyPen, ActionTypes type, double size, Colors color) {
+        id = idOfMyPen;
         this.info = new ActionParameters(type, size, color);
     }
 }
