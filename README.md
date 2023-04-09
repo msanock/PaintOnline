@@ -6,7 +6,7 @@ Simple paint application enabling multiple users, to draw on same canvas.
 
 ## How to run
 
-server can be set in:
+server's IP address can be set in(by default localhost):
 ```
 src/main/java/edu/paintOnline/connection/ConnectionSettings.java
 ```
